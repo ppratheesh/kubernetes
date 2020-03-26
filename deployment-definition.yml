@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: deployment-nginx
+      labels:
+         type: front-end
+      namespace: pratheesh
+spec:
+    replicas: 3
+    template:
+          metadata:
+               name: nginx-pod
+               labels:
+                  type: front-end
+          spec:
+              containers:
+                 - image: nginx:1.7.1
+                   name: nginx-container 
+    selector:
+          matchLabels:
+              type: front-end
+              

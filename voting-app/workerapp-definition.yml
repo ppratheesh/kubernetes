@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: deployment-workerapp 
+    namespace: pratheesh
+    labels:
+       app: worker-app
+spec:
+    replicas: 2
+    template:
+         metadata:
+               name: worker-app-pod
+               labels:
+                   app: worker-app
+         spec:
+            containers:
+                  - name: worker-app-container
+                    image: dockersamples/examplevotingapp_worker
+    selector:
+          matchLabels:
+                app: worker-app
+
+

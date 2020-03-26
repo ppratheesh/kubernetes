@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+     name: rs-nginx
+     labels:
+        type: front-end
+     namespace: pratheesh
+spec:
+   replicas: 2
+   template:
+         metadata:
+              name: nginx-pod
+              labels:
+                  type: front-end
+         spec:
+            containers:
+                  - name: nginx-container
+                    image: nginx
+   selector:
+         matchLabels:
+                 type: front-end
+

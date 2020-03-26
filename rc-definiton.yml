@@ -1,0 +1,21 @@
+--- 
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  labels: 
+    type: front-end
+  name: rc-nginx
+  namespace: pratheesh
+spec: 
+  replicas: 2
+  template: 
+    metadata: 
+      labels:
+        type: front-end
+      name: nginx-test-pod
+      namespace: pratheesh
+    spec: 
+      containers: 
+        - 
+          image: nginx
+          name: nginx-container
